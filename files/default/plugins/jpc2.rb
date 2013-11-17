@@ -20,11 +20,8 @@ provides "jpc2"
 depends "kernel"
 depends "network/interfaces"
 
-require 'pp'
-
 def has_jpc2_mac?
   network[:interfaces].values.each do |iface|
-    pp iface
     unless iface[:arp].nil?
       if iface[:arp].value?("00:00:5e:00:01:01")
         Ohai::Log.debug("has_jpc2_mac? == true")
